@@ -11,6 +11,13 @@ Project TpFileU=
 FilterU=
 Create Tagfile=0
 [FilesU]
-0=EnvLogger.ino
-1=Sensors.cpp
-2=.+AFw-Wrappers+AFw-
+0=Sensors.cpp
+1=.+AFw-Wrappers+AFw-
+2=ThingSpeak.h
+3=ThingSpeak.cpp
+4=I2CmTk.h
+5=Commands.h
+6=ArduinoSettings.bat
+7=AppTest.h
+8=AppKanaal1.h
+9=AirSensorLogger.ino

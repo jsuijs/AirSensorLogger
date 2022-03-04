@@ -25,7 +25,7 @@
   Please see LICENSE.md for more details.
 */
 
-#include "SparkFun_SCD30_Arduino_Library.h"
+#include "SparkFun_SCD30.h"
 
 SCD30::SCD30(void)
 {
