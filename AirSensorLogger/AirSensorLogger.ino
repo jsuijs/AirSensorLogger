@@ -26,8 +26,8 @@ WiFiClient client;
 
 TSensorList SensorList(20);
 
-bool WifiEnable = true;
-bool SensorTaktEnable = true;
+bool WifiEnable         = true;
+bool SensorTaktEnable   = true;
 
 //#include "AppKanaal1.h"
 #include "AppTest.h"
@@ -39,9 +39,14 @@ bool SensorTaktEnable = true;
 void setup()
 {
    Serial.begin(115200);
-   printf("\n\n---------------------------------------------\nEnvLogger\n");
+   printf("\n\n---------------------------------------------\nAirSensorLogger\n");
 
-   RegisterSensors();  // App specific, call this early to adjust 'other' settings.
+//   Wire.begin(21, 22);  // Initialize I2C Hardware -- TTGO V1.1 pins
+   Wire.begin(14, 15);  // Initialize I2C Hardware - WROOM pins
+
+   SetupSensors(); // App specific
+   SensorList.ReadSensors();
+   SensorList.DumpSensors(true);
 
    if (WifiEnable) {
       connectWiFi();
@@ -49,14 +54,6 @@ void setup()
    } else {
       printf("Wifi disabled, skip wifi setup.\n");
    }
-
-   //--------------------------------------------------------------------------
-//   Wire.begin(21, 22);  // Initialize I2C Hardware -- TTGO V1.1 pins
-   Wire.begin(14, 15);  // Initialize I2C Hardware - WROOM pins
-
-   SensorList.SetupSensors();
-   SensorList.ReadSensors();
-   SensorList.DumpSensors(true);
 }
 
 //-----------------------------------------------------------------------------
@@ -90,7 +87,7 @@ void loop()
          // Clear sensor data to restart average calculation.
          //    Required even when not commiting, since this also triggers
          //    'Stable'-check. Stable-check (only) at commit-time assures
-         //    an average of a full commit-interval...
+         //    averaging of a full commit-interval...
          SensorList.ClearSensors();
       }
    }

@@ -5,8 +5,6 @@
 const int MeasureInterval =  2 * 1000;
 const int CommitInterval  = 10 * 1000;
 
-
-
 CCS811_Wrapper    SensorCCS811("CCS811");
 HDC1080_Wrapper   SensorHDC1080("HDC1080-1");
 HTU21D_Wrapper    SensorHTU21D("HTU21D");
@@ -14,14 +12,21 @@ MCP9808_Wrapper   SensorMCP9808("MCP9808");
 MHZ19_Wrapper     SensorMHZ19("MHZ19");
 SPS30_Wrapper     SensorSPS30("SPS30");
 
-void RegisterSensors()
+void SetupSensors()
 {
+   // Add sensors to list
    SensorList.Add(SensorCCS811);
    SensorList.Add(SensorHDC1080);
    SensorList.Add(SensorHTU21D);
    SensorList.Add(SensorMCP9808);
    SensorList.Add(SensorMHZ19);
    SensorList.Add(SensorSPS30);
+
+   // Call setup of sensors in list
+   SensorList.SetupSensors();
+
+   // Post-configuration (sensors & general)
+
 }
 
 //-----------------------------------------------------------------------------
