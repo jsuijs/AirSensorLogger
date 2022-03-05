@@ -26,46 +26,22 @@ public:
       }
 
       // The SCD30 has data ready every two seconds
+// ToDo: setting for auto calibratie
 
 //--------------------------------------------------------------------------
 // SetOptions
-//  airSensor.setMeasurementInterval(16); //Change number of seconds between measurements: 2 to 1800 (30 minutes), stored in non-volatile memory of SCD30
+//   // Change number of seconds between measurements: 2 to 1800 (30 minutes), stored in non-volatile memory of SCD30
+//   airSensor.setMeasurementInterval(16);
+//   delay(200); // required for proper reporting this setting
 //
-//  //While the setting is recorded, it is not immediately available to be read.
-//  delay(200);
+//   //Set altitude of the sensor in m, stored in non-volatile memory of SCD30
+//   airSensor.setAltitudeCompensation(1600);
 //
-//  int interval = airSensor.getMeasurementInterval();
-//  Serial.print("Measurement Interval: ");
-//  Serial.println(interval);
+//   //Current ambient pressure in mBar: 700 to 1200, will overwrite altitude compensation
+//   airSensor.setAmbientPressure(835);
 //
-//  //My desk is ~1600m above sealevel
-//  airSensor.setAltitudeCompensation(1600); //Set altitude of the sensor in m, stored in non-volatile memory of SCD30
-//
-//  //Read altitude compensation value
-//  unsigned int altitude = airSensor.getAltitudeCompensation();
-//  Serial.print("Current altitude: ");
-//  Serial.print(altitude);
-//  Serial.println("m");
-//
-//  //Pressure in Boulder, CO is 24.65inHg or 834.74mBar
-//  airSensor.setAmbientPressure(835); //Current ambient pressure in mBar: 700 to 1200, will overwrite altitude compensation
-//
-//  airSensor.setTemperatureOffset(5); //Optionally we can set temperature offset to 5°C, stored in non-volatile memory of SCD30
-//
-//  //Read temperature offset
-//  float offset = airSensor.getTemperatureOffset();
-//  Serial.print("Current temp offset: ");
-//  Serial.print(offset, 2);
-//  Serial.println("C");
-
-
-//--------------------------------------------------------------------------
-// AutoCalibrate
-//    Serial.print("Auto calibration set to ");
-//    if (airSensor.getAutoSelfCalibration() == true)
-//        Serial.println("true");
-//    else
-//        Serial.println("false");
+//   //Optionally we can set temperature offset to 5°C, stored in non-volatile memory of SCD30
+//   airSensor.setTemperatureOffset(5);
 
       SetupSucces();
    }
